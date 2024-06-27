@@ -1,0 +1,40 @@
+
+{% extends "tiendaFullstackApp/base.html" %}
+{% load static %}
+{% block content %}<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda</title>
+</head>
+<body>
+    <h1 style="width: 75%; margin: auto; text-align: center; color: white;">Tienda</h1>
+    <div class="container">
+        <div style="float: right;">
+            {% if request.user.is_authenticated %}
+                {% include "carro/widget.html" %}
+            {% else %}
+                <div class="alert alert-danger text-center">Inicia sesión para comprar</div>
+            {% endif %}
+        </div>
+        <div class="row">
+            {% for producto in productos %}
+            <div class="col-md-3">
+                <div class="card" style="width: 100%; margin: 5px 5px;">
+                    <img src="{{producto.imagen.url}}" class="card-img-top">
+                    <div class="card-body">
+                        <h7 class="cad-title">{{producto.nombre}}</h7>
+                        <h7 class="cad-title">${{producto.precio}} MXN</h7>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a href="{% url 'carro:agregar' producto.id %}" class="btn btn-success">Agregar</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

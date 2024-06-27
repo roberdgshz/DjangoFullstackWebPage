@@ -1,0 +1,13 @@
+Administrador: suadmin1
+Contraseña:    1234567890
+usuarios
+{
+	[
+		nombre: usuario1,
+		contraseña: 1234qwert,
+	],
+	[
+		nombre usuario2,
+		contraseña: 1234trewq,
+	]
+}
